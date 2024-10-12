@@ -4,13 +4,13 @@ CREATE DATABASE Libreria
 -- Usar la base de datos recién creada
 USE Libreria
 
--- Crear la tabla Libros
 CREATE TABLE Libros (
-    id INT IDENTITY(1,1) PRIMARY KEY, -- Columna de identidad como clave primaria
-    Titulo VARCHAR(50) NOT NULL,
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    Titulo VARCHAR(50) NOT NULL UNIQUE, -- Aquí agregamos la restricción UNIQUE
     Autor VARCHAR(50) NOT NULL,
     CantidadDisponible INT NOT NULL
 )
+
 INSERT INTO Libros (Titulo, Autor, CantidadDisponible)
 VALUES
     ('El nombre del viento', 'Patrick Rothfuss', 3),
