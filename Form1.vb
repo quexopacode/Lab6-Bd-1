@@ -99,7 +99,7 @@ Public Class Form1
             titulo = txtTitulo.Text
             autor = txtAutor.Text
             cantidad = CInt(txtCantidad.Text)
-            If cantidad > 0 Then
+            If String.IsNullOrEmpty(titulo) OrElse String.IsNullOrEmpty(autor) AndAlso cantidad > 0 Then
                 Libro.ActualizarLibro(titulo, autor, cantidad)
                 MsgBox("Libro actualizado correctamente.")
                 CargarLibros()
