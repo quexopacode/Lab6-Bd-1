@@ -37,6 +37,8 @@ Public Class Form1
         txtCantidad.Clear()
         txtTitulo.Enabled = True
         txtAutor.Enabled = True
+        txtTitulo.ReadOnly = False
+        txtAutor.ReadOnly = False
         btnAgregar.Enabled = True
         btnAgregar.Visible = True
         btnActualizar.Enabled = False
@@ -56,12 +58,12 @@ Public Class Form1
             titulo = txtTitulo.Text
             autor = txtAutor.Text
             cantidad = CInt(txtCantidad.Text)
-            If (String.IsNullOrEmpty(titulo) OrElse String.IsNullOrEmpty(autor) AndAlso cantidad > 0) Then
-                Libro.AgregarLibro(titulo, autor, cantidad)
-                MsgBox("Libro agregado con exitosamente")
-                CargarLibros()
+            If String.IsNullOrEmpty(titulo) OrElse String.IsNullOrEmpty(autor) OrElse cantidad <= 0 Then
+                MsgBox("Por favor, complete todos los campos y asegúrese de que la cantidad sea positiva.")
             Else
-                MsgBox("No se como podrías tener unos libros inexistentes mejor ingresa una cantidad positiva")
+                Libro.AgregarLibro(titulo, autor, cantidad)
+                MsgBox("Libro agregado con éxito.")
+                CargarLibros()
             End If
         Catch ex As Exception
             MsgBox("Error al agregar libro " & ex.Message)
@@ -78,8 +80,8 @@ Public Class Form1
             txtTitulo.Text = row.Cells("Titulo").Value.ToString()
             txtAutor.Text = row.Cells("Autor").Value.ToString()
             txtCantidad.Text = row.Cells("CantidadDisponible").Value.ToString()
-            txtTitulo.Enabled = False
-            txtAutor.Enabled = False
+            txtTitulo.ReadOnly = True
+            txtAutor.ReadOnly = True
             btnAgregar.Enabled = False
             btnAgregar.Visible = False
             btnActualizar.Visible = True
@@ -99,13 +101,13 @@ Public Class Form1
             titulo = txtTitulo.Text
             autor = txtAutor.Text
             cantidad = CInt(txtCantidad.Text)
-            If String.IsNullOrEmpty(titulo) OrElse String.IsNullOrEmpty(autor) AndAlso cantidad > 0 Then
-                Libro.ActualizarLibro(titulo, autor, cantidad)
-                MsgBox("Libro actualizado correctamente.")
-                CargarLibros()
-            Else
-                MsgBox("No se como podrías tener unos libros inexistentes mejor ingresa una cantidad positiva")
+            If String.IsNullOrEmpty(titulo) OrElse String.IsNullOrEmpty(autor) OrElse cantidad <= 0 Then
+                MsgBox("Por favor, complete todos los campos con datos válidos.")
+                Exit Sub
             End If
+            Libro.ActualizarLibro(titulo, autor, cantidad)
+            MsgBox("Libro actualizado correctamente.")
+            CargarLibros()
         Catch ex As Exception
             MsgBox("Error al actualizar el libro: " & ex.Message)
         End Try
@@ -119,10 +121,8 @@ Public Class Form1
             titulo = txtTitulo.Text
             autor = txtAutor.Text
             If String.IsNullOrEmpty(titulo) OrElse String.IsNullOrEmpty(autor) Then
-                MsgBox("Por favor, ingrese el título y el autor del libro a eliminar.", "Error", MessageBoxButtons.OK)
-                Exit Sub
-            End If
-            If MsgBox("¿Está seguro de que desea eliminar este libro?", "Confirmar eliminación", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+                MsgBox("Por favor, seleccione un libro correcto")
+            Else
                 Libro.EliminarLibro(titulo, autor)
                 MsgBox("Libro eliminado correctamente.")
                 CargarLibros()
