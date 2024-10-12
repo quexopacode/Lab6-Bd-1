@@ -124,7 +124,7 @@ Partial Class Form1
         Me.txtTitulo.Location = New System.Drawing.Point(247, 42)
         Me.txtTitulo.MaxLength = 50
         Me.txtTitulo.Name = "txtTitulo"
-        Me.txtTitulo.Size = New System.Drawing.Size(100, 22)
+        Me.txtTitulo.Size = New System.Drawing.Size(163, 22)
         Me.txtTitulo.TabIndex = 7
         '
         'txtAutor
@@ -133,7 +133,7 @@ Partial Class Form1
         Me.txtAutor.Location = New System.Drawing.Point(247, 95)
         Me.txtAutor.MaxLength = 50
         Me.txtAutor.Name = "txtAutor"
-        Me.txtAutor.Size = New System.Drawing.Size(100, 22)
+        Me.txtAutor.Size = New System.Drawing.Size(163, 22)
         Me.txtAutor.TabIndex = 9
         '
         'Label4
@@ -152,7 +152,7 @@ Partial Class Form1
         Me.txtCantidad.Location = New System.Drawing.Point(247, 150)
         Me.txtCantidad.MaxLength = 999
         Me.txtCantidad.Name = "txtCantidad"
-        Me.txtCantidad.Size = New System.Drawing.Size(100, 22)
+        Me.txtCantidad.Size = New System.Drawing.Size(163, 22)
         Me.txtCantidad.TabIndex = 11
         '
         'Label5
