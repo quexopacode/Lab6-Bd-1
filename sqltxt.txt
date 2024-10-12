@@ -1,0 +1,20 @@
+-- Crear la base de datos
+CREATE DATABASE Libreria
+
+-- Usar la base de datos recién creada
+USE Libreria
+
+-- Crear la tabla Libros
+CREATE TABLE Libros (
+    id INT IDENTITY(1,1) PRIMARY KEY, -- Columna de identidad como clave primaria
+    Titulo VARCHAR(50) NOT NULL,
+    Autor VARCHAR(50) NOT NULL,
+    CantidadDisponible INT NOT NULL
+)
+INSERT INTO Libros (Titulo, Autor, CantidadDisponible)
+VALUES
+    ('El nombre del viento', 'Patrick Rothfuss', 3),
+    ('Cien años de soledad', 'Gabriel García Márquez', 5),
+    ('1984', 'George Orwell', 2),
+    ('Orgullo y prejuicio', 'Jane Austen', 8),
+    ('El alquimista', 'Paulo Coelho', 22)
